@@ -149,4 +149,35 @@ class Business(models.Model):
 
 
     def save_business(self):
-        self.save()        
+        self.save()   
+
+    @classmethod
+    def delete_business_by_id(cls, id):
+        businesses = cls.objects.filter(pk=id)
+        businesses.delete()
+
+    @classmethod
+    def get_businesses_by_id(cls, id):
+        businesses = cls.objects.get(pk=id)
+        return businesses
+
+    @classmethod
+    def filter_by_location(cls, location):
+        businesses = cls.objects.filter(location=location)
+        return businesses
+
+    @classmethod
+    def search_businesses(cls, search_term):
+        businesses = cls.objects.filter(business_name__icontains=search_term)
+        return businesses
+
+    @classmethod
+    def update_business(cls, id):
+        businesses = cls.objects.filter(id=id).update(id=id)
+        return businesses
+
+    @classmethod
+    def update_business(cls, id):
+        businesses = cls.objects.filter(id=id).update(id=id)
+        return businesses
+
