@@ -286,3 +286,12 @@ def project_list(request):
     project_list = Project.objects.order_by('-title')
     context = {'project_list':project_list}
     return render(request, 'project_list.html', context)
+
+def newsletter(request):
+    name = request.POST.get('your_name')
+    email= request.POST.get('email')
+    recipient= NewsLetterRecipients(name= name, email =email)
+    recipient.save()
+    send_welcome_email(name, email)
+    data= {'success': 'You have been successfully added to the newsletter mailing list'}
+    return JsonResponse(data)    
