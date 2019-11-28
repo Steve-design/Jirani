@@ -28,4 +28,21 @@ class Location(models.Model):
         self.delete()
 
     def __str__(self):
-        return self.name        
+        return self.name   
+
+class Image(models.Model):
+    image = models.ImageField(upload_to='picture/', )
+    name = models.CharField(max_length=40)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, related_name="images")
+    description = models.TextField()
+    location = models.ForeignKey(Location, null=True)
+    tags = models.ManyToManyField(tags, blank=True)
+    likes = models.IntegerField(default=0)
+    comments = models.TextField(blank=True)
+
+    def __str__(self):
+        return self.name
+
+    def save_image(self):
+        self.save()
+
