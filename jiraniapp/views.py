@@ -72,3 +72,37 @@ def neighbourhood(request, id):
         raise Http404()
 
     return render(request, 'neighbourhood.html', {"neighbourhood": neighbourhood, 'business':business})
+
+def project(request, id):
+
+    try:
+        project = Project.objects.get(pk = id)
+
+    except DoesNotExist:
+        raise Http404()
+
+    current_user = request.user
+    comments = Review.get_comment(Review, id)
+    latest_review_list=Review.objects.all()
+
+    if request.method == 'POST':
+        form = ReviewForm(request.POST)
+        if form.is_valid():
+
+            comment = form.cleaned_data['comment']
+            review = Review()
+            review.project = project
+            review.user = current_user
+            review.comment = comment
+
+            review.save()
+
+    else:
+        form = ReviewForm()
+
+        # return HttpResponseRedirect(reverse('image', args=(image.id,)))
+
+    return render(request, 'image.html', {"project": project,
+                                          'form':form,
+                                          'comments':comments,
+                                          'latest_review_list':latest_review_list})
