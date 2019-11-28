@@ -252,4 +252,17 @@ class Profile(models.Model):
         self.save()
 
     def delete_profile(self):
-        self.delete()        
+        self.delete()   
+
+    @classmethod
+    def search_users(cls, search_term):
+        profiles = cls.objects.filter(user__username__icontains=search_term)
+        return profiles
+
+    @property
+    def image_url(self):
+        if self.profile_pic and hasattr(self.profile_pic, 'url'):
+            return self.profile_pic.url
+
+    def __str__(self):
+        return self.user.username         
