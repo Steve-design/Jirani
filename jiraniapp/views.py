@@ -275,4 +275,8 @@ def individual_profile_page(request, username):
     latest_review_list = Review.objects.all()
     context = {'latest_review_list':latest_review_list}
     return render(request, 'review_list.html', context)
-                
+
+
+def review_detail(request, review_id):
+    review = get_object_or_404(Review, pk=review_id)
+    return render(request, 'review_detail.html', {'review': review})                
