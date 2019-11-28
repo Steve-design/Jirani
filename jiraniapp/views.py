@@ -186,4 +186,21 @@ def join(request, id):
         Join(user_id=request.user, neighbourhood_id=neighbourhood).save()
 
     print("success")
-    return redirect('homePage')    
+    return redirect('homePage')  
+
+@login_required(login_url='/accounts/login/')
+def exit(request, id):
+
+    neighbourhood = Neighbourhood.objects.get(pk=id)
+    if Join.objects.filter(user_id=request.user).exists():
+
+        Join.objects.filter(user_id=request.user).delete()
+
+        return redirect(reverse('neighbourhood', args=(neighbourhood.id,)))
+
+    else:
+
+        Join(user_id=request.user, neighbourhood_id=neighbourhood).delete()
+
+    print("success")
+    return redirect('homePage')      
