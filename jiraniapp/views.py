@@ -249,4 +249,24 @@ def search_businesses(request):
         message = "You haven't searched for any business"
         return render(request, 'search.html', {"message": message})
 
-
+@login_required(login_url='/accounts/login/')
+def individual_profile_page(request, username):
+    print(username)
+    if not username:
+        username = request.user.username
+    # images by user id
+    images = Image.objects.filter(user_id=username)
+    user = request.user
+    profile = Profile.objects.get(user=user)
+    userf = User.objects.get(pk=username)
+    latest_review_list = Review.objects.filter(user_id=username).filter(user_id=username)
+    context = {'latest_review_list': latest_review_list}
+    if userf:
+        print('user found')
+        profile = Profile.objects.get(user=userf)
+    else:
+        print('No suchuser')
+    return render (request, 'registration/user_image_list.html', context, {'images':images,
+                                                                  'profile':profile,
+                                                                  'user':user,
+                                                                  'username': username})
