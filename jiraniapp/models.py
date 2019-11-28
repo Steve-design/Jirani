@@ -82,3 +82,28 @@ class Image(models.Model):
         pictures = cls.objects.filter(id=id).update(id=id)
         return pictures
 
+
+class Neighbourhood(models.Model):
+    CITY_CHOICES = (
+        ('Mzalendo City', 'Mzalendo City'),
+        ('New Mumias', 'New Mumias'),
+        ('Kajiado WaterMills', 'Kajiado WaterMills'),
+        ('Lower RockState', 'Lower RockState'),
+        ('RockState', 'RockState'),
+        ('Mwiki Ridge', 'Mwiki Ridge'),
+        ('Sunton City', 'Sunton City'),
+        ('Nairobi', 'Nairobi'),
+        ('Mombasa', 'Mombasa'),
+        ('Kisumu', 'Kisumu'),
+
+    )
+
+    neighbourhood_name = models.CharField(max_length=30)
+    neighbourhood_location = models.CharField(choices=CITY_CHOICES, max_length=200 ,default=0, null=True, blank=True)
+    population= models.IntegerField(default=0, null=True, blank=True)
+
+    def __str__(self):
+        return self.neighbourhood_name
+
+    def save_neighbourhood(self):
+        self.save()
