@@ -1,0 +1,94 @@
+{% extends 'base.html' %} {% load static %} {% load bootstrap4%} {% block content %}
+<link href="https://fonts.googleapis.com/css?family=Charmonman|Dancing+Script|Kodchasan|Spirax|Abril+Fatface" rel="stylesheet">
+
+<div class="container">
+
+  <div class="jumbotron text-center" style="background-color:white;">
+
+    <h1 class="h1" style="font-family: 'Dosis', cursive; color:blue;font-size:40px;">Neighbourhood News</h1>
+
+
+  </div>
+</div>
+
+<div class="container">
+  <div class="card mb-3" style="width:40rem;;">
+    <img class="card-img-top" src="{{project.project_image.url}}" alt="Card image cap" class="img-fluid" size="500px100">
+    <div class="card-body">
+
+
+
+      <h5 class="card-title" style="font-family: 'Dosis', sans-serif;"><strong>Project Name:</strong>
+        <br> {{project.title}}
+      </h5>
+      <p class="card-text" style="font-family: 'Dosis', sans-serif;"><strong>Description Of Project:</strong>
+        <br> {{project.description}}
+      </p>
+    </div>
+
+    <div class="card border-secondary">
+      <div class="card-header">
+        <h5 style="font-family: 'Dosis', sans-serif;"> Comments</h5>
+      </div>
+
+
+      <div class="card-body text-primary">
+        <h4>
+          {{ review.project.title }}
+        </h4>
+        {% for review in latest_review_list %}
+        <div>
+
+          <p style="color:black; font-family: 'Dosis',sans-serif;">Comment by {{ review.user }}: {{ review.comment }}</p>
+        </div>
+
+
+        {% endfor %}
+
+
+
+
+        <h3 style="font-family: 'Dosis', sans-serif;">Add your comment</h3>
+        <hr>
+        <form action="" method="post" style="font-family: 'Dosis',sans-serif;">
+          {%csrf_token%} {% bootstrap_form form %}
+          <input type="submit" class="btn btn-primary" value="Post">
+        </form>
+        <hr>
+
+      </div>
+
+
+
+
+    </div>
+  </div>
+</div>
+</div>
+
+
+<div class="container">
+  <div class="col-md-12">
+    <div class="footer text-center">
+      <ul id="footer1">
+        <li>ABOUT US</li>
+        <li>SUPPORT</li>
+        <li>PRESS</li>
+        <li>API</li>
+        <li>JOBS</li>
+        <li>PRIVACY</li>
+        <li>TERMS</li>
+        <li>DIRECTORY</li>
+        <li>PROFILES</li>
+        <li>HASHTAGS</li>
+        <li>LANGUAGE</li>
+        <br>
+
+        <li style="font-size:10px;"> <strong>© 2019 Mzalendo</strong></li>
+      </ul>
+
+    </div>
+
+  </div>
+</div>
+{% endblock %}
