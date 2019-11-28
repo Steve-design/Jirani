@@ -230,3 +230,26 @@ class Project(models.Model):
 
     def __str__(self):
         return self.title
+
+class Profile(models.Model):
+    class Meta:
+        db_table = 'profile'
+
+    bio = models.TextField(max_length=200, null=True, blank=True, default="bio")
+    profile_pic = models.ImageField(upload_to='picture/', null=True, blank=True, default=0)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, null=True, related_name="profile")
+    project = models.ForeignKey(Project, null=True)
+    email= models.TextField(max_length=200, null=True, blank=True, default=0)
+    neighbourhood_id = models.ForeignKey(Neighbourhood, on_delete=models.CASCADE,related_name="neighbourhood",null=True,blank=True)
+
+    def create_user_profile(sender, instance, created, **kwargs):
+        if created:
+            Profile.objects.create(user=instance)
+
+    post_save.connect(create_user_profile, sender=User)
+
+    def save_profile(self):
+        self.save()
+
+    def delete_profile(self):
+        self.delete()        
