@@ -181,3 +181,25 @@ class Business(models.Model):
         businesses = cls.objects.filter(id=id).update(id=id)
         return businesses
 
+class Project(models.Model):
+    title = models.TextField(max_length=200, null=True, blank=True, default="title")
+    project_image = models.ImageField(upload_to='picture/', null=True, blank=True)
+    description = models.TextField()
+    user = models.ForeignKey(User, on_delete=models.CASCADE,related_name="neighbourhoodproject",null=True,blank=True)
+    neighbourhood = models.ForeignKey(Neighbourhood, on_delete=models.CASCADE,related_name="neighbourhoodproject",null=True,blank=True)
+
+    def average_design(self):
+        design_ratings = list(map(lambda x: x.design_rating, self.reviews.all()))
+        return np.mean(design_ratings)
+
+    def average_usability(self):
+        usability_ratings = list(map(lambda x: x.usability_rating, self.reviews.all()))
+        return np.mean(usability_ratings)
+
+    def average_content(self):
+        content_ratings = list(map(lambda x: x.content_rating, self.reviews.all()))
+        return np.mean(content_ratings)
+
+    def save_project(self):
+        self.save()        
+
