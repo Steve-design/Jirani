@@ -51,3 +51,13 @@ def home_projects (request):
     return render(request, 'index.html', {'projects':projects, 'letterForm':form,
                                           'businesses':businesses,
                                           'neighbourhoods':neighbourhoods})
+
+def business(request, id):
+
+    try:
+        business = Business.objects.get(pk = id)
+
+    except DoesNotExist:
+        raise Http404()
+
+    return render(request, 'business.html', {"business": business})                                          
