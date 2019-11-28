@@ -1,0 +1,214 @@
+{% extends 'base.html' %} {% load bootstrap4 %} {% load static %} {% block content %}
+<link href="https://fonts.googleapis.com/css?family=Charmonman|Dancing+Script|Kodchasan|Spirax|Abril+Fatface" rel="stylesheet">
+
+<div class="container container-fluid text-center m-0 mx-auto">
+
+  <section class="slide-wrapper text-center" id="section" style="padding:0px;">
+    <div class="container" id="container1" style="margin-right:20px;">
+      <div id="myCarousel" class="carousel slide" data-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators animated flash loop">
+          <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+          <li data-target="#myCarousel" data-slide-to="1"></li>
+          <li data-target="#myCarousel" data-slide-to="2"></li>
+          <li data-target="#myCarousel" data-slide-to="3"></li>
+
+        </ol>
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div class="fill" style=" background-color:#000000;">
+              <h1 class="animated bounceInLeft loop" style="font-family: 'Dosis', cursive; color:white;font-size:70px;">The Neighbourhood</h1>
+              <br>
+              <h1 class="animated bounceInRight loop "style="font-family: 'Dosis', cursive; color:white;font-size:25px">News About Your Neighbourhood
+              </h1>
+
+              <div class="card-columns">
+                {% for project in projects %}
+                <div class="card border-secondary w-33 h-auto" style=" background-color:black;"><a href="{% url 'project' project.id %}">
+
+                    <img class="img W-100" src="{{project.project_image.url}}" data-target="#imageModal{{project.id}}" data-toggle="modal" alt=""
+                      class="img-fluid" id="eachimage13" size="100px200"></a>
+                  <p style="font-family: 'Dosis', sans-serif; text-align:center;color:white;"> {{ project.description}}</p>
+                  <p style="font-family: 'Dosis', sans-serif; text-align:center;color:white;"> Posted by: {{ project.user.username}}</p>
+                  <div class="card-body">
+
+
+                    <span class="badge badge-pill badge-warning animated pulse loop" style="font-family: 'Dosis', sans-serif; text-align:center;"><a
+                        href="{% url 'project' project.id %}">View News</a></span>
+                  </div>
+
+                </div>
+                {% endfor %}
+
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="fill" style=" background-color:#b33f4a;">
+              <h1 style="font-family: 'Dosis', cursive; color:white;font-size:70px;">The Neighbourhood</h1>
+              <br>
+              <h1 style="font-family: 'Dosis', cursive; color:white;font-size:25px">Get Updates About Your Neighbourhood
+              </h1>
+              <div class="card-columns">
+                {% for project in projects %}
+                <div class="card border-secondary w-33"><a href="{% url 'project' project.id %}">
+
+                    <img src="{{project.project_image.url}}" data-target="#imageModal{{project.id}}" data-toggle="modal" alt="" class="img-fluid"
+                      id="eachimage14" size="100px200"></a>
+                  <p style="font-family: 'Dosis', sans-serif; text-align:center;"> {{ project.description}}</p>
+                  <p style="font-family: 'Dosis', sans-serif; text-align:center;"> {{ project.user.username}}</p>
+
+                  <span class="badge badge-pill badge-warning" style="font-family: 'Dosis', sans-serif; text-align:center;"><a
+                      href="{% url 'project' project.id %}">View News</a></span>
+
+                </div>
+                {% endfor %}
+              </div>
+
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="fill" style=" background-color:#7fc2f4;">
+              <h1 style="font-family: 'Dosis', cursive; color:white;font-size:70px;">The Neighbourhood</h1>
+              <br>
+              <h1 style="font-family: 'Dosis', cursive; color:white;font-size:25px">Get Updates About Your Neighbourhood
+              </h1>
+              <div class="card-columns">
+                {% for project in projects %}
+                <div class="card border-secondary w-33" style=" background-color:#7fc2f4;"><a href="{% url 'project' project.id %}">
+
+                    <img src="{{project.project_image.url}}" data-target="#imageModal{{project.id}}" data-toggle="modal" alt="" class="img-fluid"
+                      id="eachimage15" size="100px200"></a>
+                  <p style="font-family: 'Dosis', sans-serif; text-align:center;"> {{ project.description}}</p>
+                  <p style="font-family: 'Dosis', sans-serif; text-align:center;"> {{ project.user.username}}</p>
+
+                  <span class="badge badge-pill badge-warning" style="font-family: 'Dosis', sans-serif; text-align:center;"><a
+                      href="{% url 'project' project.id %}">View News</a></span>
+
+                </div>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="fill" style=" background-color:#e47794;">
+              <h1 style="font-family: 'Dosis', cursive; color:white;font-size:50px;">The Neighbourhood</h1>
+              <br>
+              <h1 style="font-family: 'Dosis', cursive; color:white;font-size:20px">Get Updates About Your Neighbourhood
+              </h1>
+              <div class="card-columns">
+                {% for project in projects %}
+                <div class="card border-secondary w-33" style=" background-color:#e47794;"><a href="{% url 'project' project.id %}">
+
+                    <img src="{{project.project_image.url}}" data-target="#imageModal{{project.id}}" data-toggle="modal" alt="" class="img-fluid"
+                      id="eachimage1" size="100px200"></a>
+                  <p style="font-family: 'Dosis', sans-serif; text-align:center;"> {{ project.description}}</p>
+                  <p style="font-family: 'Dosis', sans-serif; text-align:center;"> {{ project.user.username}}</p>
+
+                  <span class="badge badge-pill badge-warning" style="font-family: 'Dosis', sans-serif; text-align:center;"><a
+                      href="{% url 'project' project.id %}">View News</a></span>
+
+                </div>
+                {% endfor %}
+
+
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+
+<div class="jumbotron text-center mt-0 mb-0" style="background-color:#000000;font-family: 'Dosis', sans-serif;">
+  <h2 class="animated zoomInLeft" style="text-align:center;font-size:40px;color:#ffffff;"><strong>NEIGHBOURHOOD DIRECTORY</strong></h2>
+      <div class="card-deck d-flex w-32 " style="background-color:#000000">
+        {% for neighbourhood in neighbourhoods %}
+        <div class="card w-33 border border-info" style="background-color:#000000">
+            <div class="card-title border-bottom">
+              <p style="font-size:20px;color:white;"><strong>NEIGHBOURHOOD:</strong>
+
+                <strong><a href="/neighbourhood/{{neighbourhood.id}}">{{neighbourhood.neighbourhood_name}}</a></strong> </p>
+            </div>
+
+            <div class="card-body border-info w-33" style="background-color:black;">
+              <p style="color:white;">{{neighbourhood.neighbourhood_location}} </p>
+              <p style="font-family: 'Dosis', sans-serif; text-align:center;color:white"> Resident Population:
+
+                {{ neighbourhood.population}}
+              </p>
+              <button id="button" class="btn btn-lg btn-info animated pulse loop"
+                      style="font-family:'Dosis', sans-serif; text-align:center;">
+                {% if user.profile.neighbourhood_id == None %}
+                <a href="{% url 'join' neighbourhood.id %}">
+              JOIN THIS NEIGHBOURHOOD</a> </button>
+              {% endif %}
+
+        </div>
+
+
+    </div>
+        {% endfor %}
+</div>
+</div>
+<div class="jumbotron text-center mt-0 mb-0" style="background-color:black;font-family: 'Dosis', sans-serif;">
+  <h2 class="animated zoomInLeft" style="text-align:center;font-size:40px;color:#ffffff;"><strong>BUSINESS DIRECTORY</strong></h2>
+      <div class="card-deck d-flex">
+        {% for business in businesses %}
+        <div class="card w-33 border border-info" style="background-color:black;">
+            <div class="card-title border-bottom">
+              <p id="p" style="font-size:20px;color:white;"> <a href="{% url 'business' business.id %}"><strong>BUSINESS NAME:</strong>
+
+                <strong> {{business.business_name}}</strong> </a></p>
+            </div>
+          <hr>
+            <div class="card-body border-info w-33">
+
+              <p style="color:white;">{{business.neighbourhood_id}} </p>
+              <p style="font-family: 'Dosis', sans-serif; text-align:center;color:white;"> Contact Information:
+                <br>
+                {{ business.business_email_address}}
+              </p>
+            </div>
+        </div>
+        {% endfor %}
+
+    </div>
+</div>
+  <div class="jumbotron text-center mt-1" style="background-color:#000000;font-family: 'Dosis', sans-serif;">
+
+    <form action="{%url 'homePage'%}" method="post" id="formletter" style="color:#ffffff;">
+      {%csrf_token%} {% bootstrap_form letterForm %}
+      <input type="submit" style="background-color:white;" value="Subscribe To Neighbourhood ">
+    </form>
+
+    <div class="container" id="">
+      <div class="col-md-12">
+        <div class="footer text-center">
+          <ul id="footer1" style="color:#ffffff;">
+            <li>ABOUT US</li>
+            <li>SUPPORT</li>
+            <li>PRESS</li>
+            <li>API</li>
+            <li>JOBS</li>
+            <li>PRIVACY</li>
+            <li>TERMS</li>
+            <li>DIRECTORY</li>
+            <li>PROFILES</li>
+            <li>HASHTAGS</li>
+            <li>LANGUAGE</li>
+            <br>
+
+            <li style="font-size:10px;"> <strong>© 2019 Mzalendo</strong></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {% endblock %} {% block scripts %} {{block.super}}
+  <script type="text/javascript" src="{%static 'js/scripts.js'%}"></script> {% endblock %}
