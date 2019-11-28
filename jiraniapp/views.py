@@ -203,4 +203,9 @@ def exit(request, id):
         Join(user_id=request.user, neighbourhood_id=neighbourhood).delete()
 
     print("success")
-    return redirect('homePage')      
+    return redirect('homePage')     
+
+def user_list(request):
+    user_list = User.objects.all()
+    context = {'user_list': user_list}
+    return render(request, 'user_list.html', context)     
