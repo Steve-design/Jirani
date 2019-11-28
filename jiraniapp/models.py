@@ -107,3 +107,33 @@ class Neighbourhood(models.Model):
 
     def save_neighbourhood(self):
         self.save()
+
+    @classmethod
+    def delete_neighbourhood_by_id(cls, id):
+        neighbourhoods = cls.objects.filter(pk=id)
+        neighbourhoods.delete()
+
+    @classmethod
+    def get_neighbourhood_by_id(cls, id):
+        neighbourhoods = cls.objects.get(pk=id)
+        return neighbourhoods
+
+    @classmethod
+    def filter_by_location(cls, location):
+        neighbourhoods = cls.objects.filter(location=location)
+        return neighbourhoods
+
+    @classmethod
+    def search_neighbourhood(cls, search_term):
+        neighbourhoods = cls.objects.filter(neighbourhood_name__icontains=search_term)
+        return neighbourhoods
+
+    @classmethod
+    def update_neighbourhood(cls, id):
+        neighbourhoods = cls.objects.filter(id=id).update(id=id)
+        return neighbourhoods
+
+    @classmethod
+    def update_neighbourhood(cls, id):
+        neighbourhoods = cls.objects.filter(id=id).update(id=id)
+        return neighbourhoods    
