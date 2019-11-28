@@ -137,3 +137,16 @@ class Neighbourhood(models.Model):
     def update_neighbourhood(cls, id):
         neighbourhoods = cls.objects.filter(id=id).update(id=id)
         return neighbourhoods    
+
+class Business(models.Model):
+    business_name = models.CharField(max_length=30, null=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, related_name="business")
+    neighbourhood_id = models.ForeignKey(Neighbourhood, on_delete=models.CASCADE,related_name="neighbourhoodbusiness",null=True,blank=True)
+    business_email_address = models.CharField(max_length=200, null = True)
+
+    def __str__(self):
+        return self.business_name
+
+
+    def save_business(self):
+        self.save()        
