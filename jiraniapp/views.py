@@ -225,4 +225,14 @@ def edit_profile(request):
 
     else:
         form = UpdatebioForm()
-    return render(request, 'registration/edit_profile.html', {"form": form})       
+    return render(request, 'registration/edit_profile.html', {"form": form})   
+
+@login_required(login_url='/accounts/login/')
+def individual_profile_page(request, username=None):
+    if not username:
+        username = request.user.username
+    
+    images = Image.objects.filter(user_id=username)
+
+    return render (request, 'registration/user_image_list.html', {'images':images, 'username': username})
+
