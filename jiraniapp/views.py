@@ -279,4 +279,10 @@ def individual_profile_page(request, username):
 
 def review_detail(request, review_id):
     review = get_object_or_404(Review, pk=review_id)
-    return render(request, 'review_detail.html', {'review': review})                
+    return render(request, 'review_detail.html', {'review': review})   
+  
+
+def project_list(request):
+    project_list = Project.objects.order_by('-title')
+    context = {'project_list':project_list}
+    return render(request, 'project_list.html', context)
