@@ -22,3 +22,12 @@ class ReviewAdmin(admin.ModelAdmin):
 class NeighbourhoodAdmin(admin.ModelAdmin):
     model = Neighbourhood
     list_display = ( 'neighbourhood_name', 'neighbourhood_location', 'population' )
+
+
+admin.site.register(Location)
+admin.site.register(tags)
+admin.site.register(Image, ImageAdmin)
+admin.site.register(Profile, ProfileAdmin)
+admin.site.register(Project, ProjectAdmin)
+admin.site.register(Review, ReviewAdmin)
+admin.site.register(Neighbourhood, NeighbourhoodAdmin)
