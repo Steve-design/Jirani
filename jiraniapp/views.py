@@ -167,3 +167,23 @@ def new_neighbourhood(request):
     else:
         form = CreateNeighbourhoodForm()
     return render(request, 'registration/new_neighbourhood.html', {"form": form})
+
+
+@login_required(login_url='/accounts/login/')
+def join(request, id):
+    '''
+    This view function will implement adding
+    '''
+    neighbourhood = Neighbourhood.objects.get(pk=id)
+    if Join.objects.filter(user_id=request.user).exists():
+
+        Join.objects.filter(user_id=request.user).update(neighbourhood_id=neighbourhood)
+
+        return redirect(reverse('neighbourhood', args=(neighbourhood.id,)))
+
+    else:
+
+        Join(user_id=request.user, neighbourhood_id=neighbourhood).save()
+
+    print("success")
+    return redirect('homePage')    
