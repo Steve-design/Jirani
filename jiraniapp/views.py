@@ -270,3 +270,9 @@ def individual_profile_page(request, username):
                                                                   'profile':profile,
                                                                   'user':user,
                                                                   'username': username})
+
+                                                  def review_list(request):
+    latest_review_list = Review.objects.all()
+    context = {'latest_review_list':latest_review_list}
+    return render(request, 'review_list.html', context)
+                
