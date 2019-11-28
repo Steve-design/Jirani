@@ -1,0 +1,54 @@
+{% extends 'base.html' %} {% load static %} {% load bootstrap4%} {% block content %}
+<link href="https://fonts.googleapis.com/css?family=Charmonman|Dancing+Script|Kodchasan|Spirax|Abril+Fatface" rel="stylesheet">
+
+<div class="container">
+
+  <div class="jumbotron text-center" style="background-color:black;">
+
+    <h1 class="h1" style="font-family: 'Dosis', cursive; color:white;font-size:70px;">Business</h1>
+
+
+  </div>
+</div>
+
+<div class="container">
+  <div class="card mb-3 border border-info " style="width:40rem;background-color:black;">
+    <div class="card-body">
+
+      <h5 class="card-title border-bottom" style="font-family: 'Dosis', sans-serif;color:white;"><strong>Business Name:</strong>
+        <br> {{business.business_name}}
+      </h5>
+      <p class="card-text" style="font-family: 'Dosis', sans-serif;color:white;"><strong>Contact:</strong>
+        <br> {{business.business_email_address}}
+      </p>
+    </div>
+
+
+    </div>
+  </div>
+
+<div class="container">
+  <div class="col-md-12">
+    <div class="footer text-center">
+      <ul id="footer1">
+        <li>ABOUT US</li>
+        <li>SUPPORT</li>
+        <li>PRESS</li>
+        <li>API</li>
+        <li>JOBS</li>
+        <li>PRIVACY</li>
+        <li>TERMS</li>
+        <li>DIRECTORY</li>
+        <li>PROFILES</li>
+        <li>HASHTAGS</li>
+        <li>LANGUAGE</li>
+        <br>
+
+        <li style="font-size:10px;"> <strong>© 2019 Mzalendo</strong></li>
+      </ul>
+
+    </div>
+
+  </div>
+</div>
+{% endblock %}
