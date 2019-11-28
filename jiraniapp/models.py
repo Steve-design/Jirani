@@ -46,3 +46,39 @@ class Image(models.Model):
     def save_image(self):
         self.save()
 
+
+@classmethod
+    def delete_image_by_id(cls, id):
+        pictures = cls.objects.filter(pk=id)
+        pictures.delete()
+
+    @classmethod
+    def get_image_by_id(cls, id):
+        pictures = cls.objects.get(pk=id)
+        return pictures
+
+    @classmethod
+    def filter_by_tag(cls, tags):
+        pictures = cls.objects.filter(tags=tags)
+        return pictures
+
+    @classmethod
+    def filter_by_location(cls, location):
+        pictures = cls.objects.filter(location=location)
+        return pictures
+
+    @classmethod
+    def search_image(cls, search_term):
+        pictures = cls.objects.filter(name__icontains=search_term)
+        return pictures
+
+    @classmethod
+    def update_image(cls, id):
+        pictures = cls.objects.filter(id=id).update(id=id)
+        return pictures
+
+    @classmethod
+    def update_description(cls, id):
+        pictures = cls.objects.filter(id=id).update(id=id)
+        return pictures
+
