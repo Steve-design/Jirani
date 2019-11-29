@@ -1,0 +1,85 @@
+{% extends 'base.html' %} {% load static %} {% load bootstrap4%} {% block content %}
+<link href="https://fonts.googleapis.com/css?family=Charmonman|Dancing+Script|Kodchasan|Spirax|Abril+Fatface" rel="stylesheet">
+
+<div class="container">
+  <div class="jumbotron text-center" style="background-color:black;">
+    <h1 class="h1" style="font-family: 'Dosis', cursive; color:white;font-size:70px;">Neighbourhood</h1>
+
+  </div>
+</div>
+
+<div class="container" style="background-color:black;">
+  <div class="card mb-3 border border-info" style="width:40rem;background-color:black;">
+    <div class="card-body ">
+
+      <h5 class="card-title border-bottom" style="font-family: 'Dosis', sans-serif;color:white;"><strong>Neighbourhood Name:</strong>
+        <br> {{neighbourhood.neighbourhood_name}}
+      </h5>
+      <p class="card-text" style="font-family: 'Dosis', sans-serif;color:white;"><strong>Contact:</strong>
+        <br> {{neighbourhood.neighbourhood_location}}
+      </p>
+         <p class="card-text" style="font-family: 'Dosis', sans-serif;color:white;"><strong>Residents Population:</strong>
+        <br> {{neighbourhood.population}}
+      </p>
+
+      <button class="btn btn-lg btn-danger"
+                      style="font-family:'Dosis', sans-serif; text-align:center;">
+                <a href="{% url 'exit' neighbourhood.id %}" class="btn btn-sm btn-danger animated pulse loop">
+              EXIT THIS NEIGHBOURHOOD</a> </button>
+    </div>
+
+    </div>
+  </div>
+
+
+<div class="jumbotron text-center mt-0 mb-0" style="background-color:black;font-family: 'Dosis', sans-serif;">
+  <h2 style="text-align:center;font-size:30px;color:WHITE;"><strong>BUSINESSES IN THIS NEIGHBOURHOOD</strong></h2>
+      <div class="card-deck d-flex" style="background-color:black;">
+         {% for business in neighbourhood.neighbourhoodbusiness.all %}
+        <div class="card w-33 border border-info" style="background-color:black;">
+            <div class="card-title border-bottom">
+              <p style="font-size:20px;color:white"> <a href="{% url 'business' business.id %}"><strong>Business Name:</strong>
+
+                <strong> {{business.business_name}}</strong> </a></p>
+            </div>
+            <div class="card-body border-info w-33">
+
+              <p style="color:white;">{{business.neighbourhood_id}} </p>
+              <p style="font-family: 'Dosis', sans-serif; text-align:center;color:white;"> Contact Information:
+                <br>
+                {{ business.business_email_address}}
+              </p>
+            </div>
+        </div>
+        {% endfor %}
+
+    </div>
+</div>
+
+
+
+<div class="container">
+  <div class="col-md-12">
+    <div class="footer text-center">
+      <ul id="footer1">
+        <li>ABOUT US</li>
+        <li>SUPPORT</li>
+        <li>PRESS</li>
+        <li>API</li>
+        <li>JOBS</li>
+        <li>PRIVACY</li>
+        <li>TERMS</li>
+        <li>DIRECTORY</li>
+        <li>PROFILES</li>
+        <li>HASHTAGS</li>
+        <li>LANGUAGE</li>
+        <br>
+
+        <li style="font-size:10px;"> <strong>© 2019 Mzalendo</strong></li>
+      </ul>
+
+    </div>
+
+  </div>
+</div>
+{% endblock %}
