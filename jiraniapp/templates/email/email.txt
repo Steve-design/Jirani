@@ -1,0 +1,4 @@
+Hello {{name}}
+
+Welcome to the Neighbourhood.
+    You will be able to get updates on every activities happening in your area!
