@@ -1,5 +1,5 @@
-from django.test import TestCase
 from __future__ import unicode_literals
+from django.test import TestCase
 from .models import *
 from django.core.files.uploadedfile import SimpleUploadedFile
 
