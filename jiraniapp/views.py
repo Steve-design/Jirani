@@ -1,5 +1,5 @@
-from django.shortcuts import render, redirect, get_object_or_404
 from __future__ import unicode_literals
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import *
 from django.http  import HttpResponse, Http404, HttpResponseRedirect, JsonResponse
 from django.contrib.auth.decorators import login_required
@@ -271,7 +271,7 @@ def individual_profile_page(request, username):
                                                                   'user':user,
                                                                   'username': username})
 
-                                                  def review_list(request):
+def review_list(request):
     latest_review_list = Review.objects.all()
     context = {'latest_review_list':latest_review_list}
     return render(request, 'review_list.html', context)
