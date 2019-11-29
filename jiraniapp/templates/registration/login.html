@@ -1,0 +1,101 @@
+{%extends "registration/base.html"%} {% load bootstrap4 %} {% load static %} {% block content %}
+<div class="container" style="background-color: black;">
+  <div class="row p-0 m-0">
+    <div class="col-md-6 mt-5">
+      {% if form.errors %}
+      <p> Password or Username is incorrect </p>
+      {% endif %}
+
+      <img class="thumbnail" src="{% static 'photos/image1.jpg' %}" style="height:400px;width:450px;">
+
+
+    </div>
+
+    <div class="col-md-6  mt-5" style="background-color:black;">
+      {% if form.errors %}
+      <p> Some Information Might be Incorrect </p>
+      {% endif %}
+      <div class="card border-primary mb-4" style="max-width:25rem;">
+
+        <div class="card-header text-center border-bottom" style="background-color:black;">
+          <h1 class="h1" style="font-family: 'Dosis', sans-serif; color:white;font-size:40px;">NEIGHBOURHOOD</h1>
+          <h3 class="text-center" style="color:white;font-size:15px;font-family: 'Dosis', sans-serif;">Login to see photos and videos from your friends in this neighbourhood.</h3>
+        </div>
+
+        <div class="card-body text-primary"style=" background-color:black;">
+          <form action="/accounts/login/" method="post" style="font-family: 'Dosis', sans-serif;color:white; background-color:black;" >
+            {% csrf_token %} {% bootstrap_form form%}
+
+            <div class="form-group">
+              <input type="submit" class="btn btn-primary btn-sm" value="Login">
+            </div>
+
+            <input type="hidden" name="next" value="{{next}}">
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ********************* -->
+
+  <div class="row p-0 m-0">
+    <div class="col-md-6" style="background-color:black;">
+      <div class="card mt-5 border border-primary" style="width: 28rem;background-color:black;">
+        <div class="card-body text-center">
+          <h5 class="card-title" style="font-family: 'Dosis', sans-serif;color:white;">Don't have an account?</h5>
+          <h2 style="color:white;font-size:10px;font-family: 'Dosis', sans-serif;">By signing up, you agree to our Terms, Data Policy and Cookies Policy.</h2>
+          <a href="/accounts/register" class="btn btn-primary" style="font-family: 'Dosis', sans-serif;color:white;">Sign Up</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="card mt-5 border border-primary" style="width: 28rem; background-color:black;">
+        <div class="card-body text-center">
+          <h5 class="card-title" style="font-family: 'Dosis', sans-serif;color:white;" >Get the app.</h5>
+          <a href="https://itunes.apple.com/ke/app/instagram/id389801252?mt=8">
+            <img src="{% static 'photos/appstore.png' %}"
+              style="height:60px;width:150px;"></a>
+          <a href="https://play.google.com/store?hl=en"><img src="{% static 'photos/playstore.png' %}" style="height:60px;width:150px;"></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ********************* -->
+</div>
+
+<br>
+<br>
+
+
+<div class="container">
+  <div class="col-md-12">
+    <div class="footer text-center">
+      <ul id="footer1">
+        <li>ABOUT US</li>
+        <li>SUPPORT</li>
+        <li>PRESS</li>
+        <li>API</li>
+        <li>JOBS</li>
+        <li>PRIVACY</li>
+        <li>TERMS</li>
+        <li>DIRECTORY</li>
+        <li>PROFILES</li>
+        <li>HASHTAGS</li>
+        <li>LANGUAGE</li>
+        <br>
+        <li style="font-size:10px;"> <strong>© 2019 Mzalendo</strong></li>
+      </ul>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+</div>
+
+{% endblock %}
