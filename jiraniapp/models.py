@@ -1,5 +1,5 @@
-from django.db import models
 from __future__ import unicode_literals
+from django.db import models
 import numpy as np
 from django.db.models.signals import post_save
 from django.db import models
@@ -47,7 +47,7 @@ class Image(models.Model):
         self.save()
 
 
-@classmethod
+    @classmethod
     def delete_image_by_id(cls, id):
         pictures = cls.objects.filter(pk=id)
         pictures.delete()
@@ -203,7 +203,7 @@ class Project(models.Model):
     def save_project(self):
         self.save()        
 
-     @classmethod
+    @classmethod
     def delete_project_by_id(cls, id):
         projects = cls.objects.filter(pk=id)
         projects.delete()
