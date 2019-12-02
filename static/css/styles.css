@@ -115,8 +115,8 @@ a {
   }
   
   .slow{
-  animation-duration:2000ms;
-  cubic-bezier(.32,-0.07,.73,.64);
+  animation-duration:
+  cubic-bezier(32,-0.07,.73,.64)
   
   }
   

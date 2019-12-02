@@ -17,7 +17,7 @@
         <!-- Wrapper for slides -->
         <div class="carousel-inner">
           <div class="carousel-item active">
-            <div class="fill" style=" background-color:#000000;">
+            <div class="fill" style=" background-color:grey;">
               <h1 class="animated bounceInLeft loop" style="font-family: 'Dosis', cursive; color:white;font-size:70px;">The Neighbourhood</h1>
               <br>
               <h1 class="animated bounceInRight loop "style="font-family: 'Dosis', cursive; color:white;font-size:25px">News About Your Neighbourhood
@@ -25,7 +25,7 @@
 
               <div class="card-columns">
                 {% for project in projects %}
-                <div class="card border-secondary w-33 h-auto" style=" background-color:black;"><a href="{% url 'project' project.id %}">
+                <div class="card border-secondary w-33 h-auto" style=" background-color:grey;"><a href="{% url 'project' project.id %}">
 
                     <img class="img W-100" src="{{project.project_image.url}}" data-target="#imageModal{{project.id}}" data-toggle="modal" alt=""
                       class="img-fluid" id="eachimage13" size="100px200"></a>
@@ -124,7 +124,7 @@
 </div>
 
 
-<div class="jumbotron text-center mt-0 mb-0" style="background-color:#000000;font-family: 'Dosis', sans-serif;">
+<div class="jumbotron text-center mt-0 mb-0" style="background-color:grey;font-family: 'Dosis', sans-serif;">
   <h2 class="animated zoomInLeft" style="text-align:center;font-size:40px;color:#ffffff;"><strong>NEIGHBOURHOOD DIRECTORY</strong></h2>
       <div class="card-deck d-flex w-32 " style="background-color:#000000">
         {% for neighbourhood in neighbourhoods %}
@@ -155,7 +155,7 @@
         {% endfor %}
 </div>
 </div>
-<div class="jumbotron text-center mt-0 mb-0" style="background-color:black;font-family: 'Dosis', sans-serif;">
+<div class="jumbotron text-center mt-0 mb-0" style="background-color:grey;font-family: 'Dosis', sans-serif;">
   <h2 class="animated zoomInLeft" style="text-align:center;font-size:40px;color:#ffffff;"><strong>BUSINESS DIRECTORY</strong></h2>
       <div class="card-deck d-flex">
         {% for business in businesses %}
