@@ -1,4 +1,4 @@
-# Neighbourhood Application
+# Neighbourhood App
 
 This application was built by Django version 1.11 a python framework.
 
